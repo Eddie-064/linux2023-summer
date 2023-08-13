@@ -408,12 +408,12 @@ static void __treeint_dump(struct st_node *n, int depth)
     if (!n)
         return;
 
-    __treeint_dump(n->left, depth + 1);  // FFFF
+    __treeint_dump(st_left(n), depth + 1);  // FFFF
 
     struct treeint *v = treeint_entry(n);
     printf("%d\n", v->value);
 
-    __treeint_dump(n->right, depth + 1);  // GGGG
+    __treeint_dump(st_right(n), depth + 1);  // GGGG
 }
 
 void treeint_dump()
