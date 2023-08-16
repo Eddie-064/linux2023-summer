@@ -13,7 +13,7 @@ test_pthread: CFLAGS += -DUSE_PTHREADS
 test_linux: CFLAGS += -DUSE_LINUX
 
 # Test suite
-NAME_S := $(shell uname -s)
+UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
     PRINTF = printf
 else

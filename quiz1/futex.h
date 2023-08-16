@@ -1,6 +1,6 @@
 #pragma once
 
-#if USE_LINUX
+#if 1 //USE_LINUX
 
 #include <limits.h>
 #include <linux/futex.h>
