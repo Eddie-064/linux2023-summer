@@ -48,19 +48,19 @@ static inline void cond_wait(cond_t *cond, mutex_t *mutex)
 
     mutex_lock(mutex);
 
-    fetch_or(&mutex->state, MUTEX_SLEEPING, relaxed);   //AAAA
+    fetch_or(&mutex->state, MUTEX_SLEEPING, relaxed);  // AAAA
 }
 
 static inline void cond_signal(cond_t *cond, mutex_t *mutex)
 {
-    fetch_add(&cond->seq, 1, relaxed);  //BBBB
-    futex_wake(&cond->seq, 1);          //EEEE
+    fetch_add(&cond->seq, 1, relaxed);  // BBBB
+    futex_wake(&cond->seq, 1);          // EEEE
 }
 
 static inline void cond_broadcast(cond_t *cond, mutex_t *mutex)
 {
-    fetch_add(&cond->seq, 1, relaxed);              //CCCC 
-    futex_requeue(&cond->seq, 1, &mutex->state);    //DDDD
+    fetch_add(&cond->seq, 1, relaxed);            // CCCC
+    futex_requeue(&cond->seq, 1, &mutex->state);  // DDDD
 }
 
 #endif
